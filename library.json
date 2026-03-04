@@ -1,0 +1,26 @@
+{
+    "name": "lua_espnow",
+    "version": "1.0.0",
+    "description": "ESP-NOW wireless communication library for ESP32 with Lua support. Provides peer-to-peer and broadcast messaging with simple module.function API.",
+    "keywords": "lua, esp32, esp32s3, espnow, wireless, peer-to-peer, broadcast",
+    "autocomplete": "/espnow.json",
+    "authors": [
+        {
+            "name": "Chahil Patel",
+            "email": "chahil@hyperlab.life",
+            "maintainer": true
+        },
+        {
+            "name": "Akshay P Kumar",
+            "email": "akshay@hyperlab.life",
+            "maintainer": true
+        }
+    ],
+    "export": {
+        "include": [
+            "src"
+        ]
+    },
+    "frameworks": ["arduino"],
+    "platforms": ["espressif32"]
+}

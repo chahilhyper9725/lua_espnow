@@ -1,0 +1,104 @@
+{
+  "espnow": [
+    {
+      "name": "espnow.init",
+      "snippet": "espnow.init(${1:channel})",
+      "description": "espnow.init(channel?) -> bool\nInit WiFi STA + ESP-NOW on given channel.\n- channel: number 1-14 (default: 1)"
+    },
+    {
+      "name": "espnow.deinit",
+      "snippet": "espnow.deinit()",
+      "description": "espnow.deinit()\nShut down ESP-NOW and free resources."
+    },
+    {
+      "name": "espnow.is_initialized",
+      "snippet": "espnow.is_initialized()",
+      "description": "espnow.is_initialized() -> bool\nReturns true if ESP-NOW is initialized."
+    },
+    {
+      "name": "espnow.add_peer",
+      "snippet": "espnow.add_peer(\"${1:AA:BB:CC:DD:EE:FF}\")",
+      "description": "espnow.add_peer(mac, channel?, encrypt?, lmk?) -> bool\nAdd an ESP-NOW peer.\n- mac: string \"AA:BB:CC:DD:EE:FF\" or \"aa:bb:cc:dd:ee:ff\" (case-insensitive)\n- channel: number 0-14 (default: 0 = current)\n- encrypt: bool (default: false)\n- lmk: string exactly 16 bytes (default: nil)"
+    },
+    {
+      "name": "espnow.del_peer",
+      "snippet": "espnow.del_peer(\"${1:AA:BB:CC:DD:EE:FF}\")",
+      "description": "espnow.del_peer(mac) -> bool\nRemove an ESP-NOW peer.\n- mac: string \"AA:BB:CC:DD:EE:FF\" (case-insensitive)"
+    },
+    {
+      "name": "espnow.mod_peer",
+      "snippet": "espnow.mod_peer(\"${1:AA:BB:CC:DD:EE:FF}\")",
+      "description": "espnow.mod_peer(mac, channel?, encrypt?, lmk?) -> bool\nModify an existing peer.\n- mac: string \"AA:BB:CC:DD:EE:FF\" (case-insensitive)\n- channel: number 0-14 (default: 0 = current)\n- encrypt: bool (default: false)\n- lmk: string exactly 16 bytes (default: nil)"
+    },
+    {
+      "name": "espnow.peer_exists",
+      "snippet": "espnow.peer_exists(\"${1:AA:BB:CC:DD:EE:FF}\")",
+      "description": "espnow.peer_exists(mac) -> bool\nCheck if peer is registered.\n- mac: string \"AA:BB:CC:DD:EE:FF\" (case-insensitive)"
+    },
+    {
+      "name": "espnow.peer_count",
+      "snippet": "espnow.peer_count()",
+      "description": "espnow.peer_count() -> total, encrypted\nReturns two numbers: total peers and encrypted peers."
+    },
+    {
+      "name": "espnow.send",
+      "snippet": "espnow.send(${1:mac}, \"${2:data}\")",
+      "description": "espnow.send(mac, data) -> bool\nSend data to a peer or broadcast.\n- mac: string \"AA:BB:CC:DD:EE:FF\" (case-insensitive) or nil for broadcast\n- data: string, max 1470 bytes (ESP-NOW v2)"
+    },
+    {
+      "name": "espnow.broadcast",
+      "snippet": "espnow.broadcast(\"${1:data}\")",
+      "description": "espnow.broadcast(data) -> bool\nBroadcast data to all peers.\n- data: string, max 1470 bytes (ESP-NOW v2)"
+    },
+    {
+      "name": "espnow.receive",
+      "snippet": "espnow.receive()",
+      "description": "espnow.receive() -> mac, data | nil\nNon-blocking dequeue. Returns mac string + data string, or nil if empty."
+    },
+    {
+      "name": "espnow.on_receive",
+      "snippet": "espnow.on_receive(function(mac, data)\n\t${1:-- handle}\nend)",
+      "description": "espnow.on_receive(callback)\nRegister Lua receive callback. Called by poll().\n- callback: function(mac: string, data: string)"
+    },
+    {
+      "name": "espnow.on_send",
+      "snippet": "espnow.on_send(function(mac, success)\n\t${1:-- handle}\nend)",
+      "description": "espnow.on_send(callback)\nRegister Lua send-status callback. Called by poll().\n- callback: function(mac: string, success: bool)"
+    },
+    {
+      "name": "espnow.poll",
+      "snippet": "espnow.poll()",
+      "description": "espnow.poll()\nProcess receive/send queues and fire registered Lua callbacks."
+    },
+    {
+      "name": "espnow.get_mac",
+      "snippet": "espnow.get_mac()",
+      "description": "espnow.get_mac() -> string\nReturns own MAC address as \"AA:BB:CC:DD:EE:FF\"."
+    },
+    {
+      "name": "espnow.get_version",
+      "snippet": "espnow.get_version()",
+      "description": "espnow.get_version() -> number\nReturns ESP-NOW protocol version."
+    },
+    {
+      "name": "espnow.get_channel",
+      "snippet": "espnow.get_channel()",
+      "description": "espnow.get_channel() -> number\nReturns current WiFi channel (1-14)."
+    },
+    {
+      "name": "espnow.set_channel",
+      "snippet": "espnow.set_channel(${1:channel})",
+      "description": "espnow.set_channel(channel) -> bool\nSet WiFi channel.\n- channel: number 1-14"
+    },
+    {
+      "name": "espnow.set_pmk",
+      "snippet": "espnow.set_pmk(\"${1:16_byte_key}\")",
+      "description": "espnow.set_pmk(key) -> bool\nSet primary master key for encryption.\n- key: string exactly 16 bytes"
+    },
+    {
+      "name": "espnow.MAX_DATA_LEN",
+      "snippet": "espnow.MAX_DATA_LEN",
+      "description": "espnow.MAX_DATA_LEN -> 1470\nMaximum ESP-NOW v2 payload size in bytes."
+    }
+  ]
+}
